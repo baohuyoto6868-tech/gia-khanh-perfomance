@@ -1,0 +1,6 @@
+{
+  "name": "Garage Gia Khánh Performance",
+  "description": "Chuyên sửa chữa, bảo dưỡng, nâng cấp và độ làm đẹp ô tô cao cấp – xe Đức (BMW, Mercedes-Benz, Audi) tại Long Giao, Cẩm Mỹ, Đồng Nai.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
