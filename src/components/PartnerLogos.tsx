@@ -1,15 +1,32 @@
 import React from 'react';
 
-interface PartnerBrand {
+export interface PartnerBrand {
   id: string;
   name: string;
+  region: 'Châu Âu' | 'Châu Á';
   renderLogo: () => React.ReactNode;
 }
 
+const TypographicBrandPlaceholder: React.FC<{ label: string; region: 'Châu Âu' | 'Châu Á' }> = ({
+  label,
+  region,
+}) => (
+  <div className="flex flex-col items-center justify-center gap-1.5 text-center px-2">
+    <span className="text-[18px] sm:text-[20px] font-extrabold italic uppercase tracking-[2px] text-[#1B2A47] leading-none whitespace-nowrap">
+      {label}
+    </span>
+    <span className="text-[10px] font-semibold uppercase tracking-[1.8px] text-[#5B6B88]">
+      {region}
+    </span>
+  </div>
+);
+
 export const PARTNER_BRANDS: PartnerBrand[] = [
+  // Châu Âu: Mercedes-Benz, BMW, Audi, Porsche, Land Rover, MINI, Volkswagen, Volvo
   {
     id: 'mercedes',
     name: 'Mercedes-Benz',
+    region: 'Châu Âu',
     renderLogo: () => (
       <div className="flex flex-col items-center justify-center gap-2">
         <svg viewBox="0 0 64 64" className="w-12 h-12" fill="none" aria-hidden="true">
@@ -29,13 +46,14 @@ export const PARTNER_BRANDS: PartnerBrand[] = [
   {
     id: 'bmw',
     name: 'BMW',
+    region: 'Châu Âu',
     renderLogo: () => (
       <div className="flex flex-col items-center justify-center gap-2">
         <svg viewBox="0 0 64 64" className="w-12 h-12" fill="none" aria-hidden="true">
           <circle cx="32" cy="32" r="27" fill="#1B2A47" />
           <circle cx="32" cy="32" r="18.5" fill="#FFFFFF" stroke="#8C99B0" strokeWidth="1.5" />
-          <path d="M32 13.5A18.5 18.5 0 0 0 13.5 32H32V13.5Z" fill="#0B5BE0" className="brand-accent-fill" />
-          <path d="M32 50.5A18.5 18.5 0 0 0 50.5 32H32V50.5Z" fill="#0B5BE0" className="brand-accent-fill" />
+          <path d="M32 13.5A18.5 18.5 0 0 0 13.5 32H32V13.5Z" fill="#0B5BE0" />
+          <path d="M32 50.5A18.5 18.5 0 0 0 50.5 32H32V50.5Z" fill="#0B5BE0" />
           <text
             x="32"
             y="11"
@@ -58,6 +76,7 @@ export const PARTNER_BRANDS: PartnerBrand[] = [
   {
     id: 'audi',
     name: 'Audi',
+    region: 'Châu Âu',
     renderLogo: () => (
       <div className="flex flex-col items-center justify-center gap-2">
         <svg viewBox="0 0 116 44" className="w-24 h-10" fill="none" aria-hidden="true">
@@ -73,12 +92,38 @@ export const PARTNER_BRANDS: PartnerBrand[] = [
     ),
   },
   {
+    id: 'porsche',
+    name: 'Porsche',
+    region: 'Châu Âu',
+    renderLogo: () => (
+      <div className="flex flex-col items-center justify-center gap-1.5">
+        <svg viewBox="0 0 64 70" className="w-11 h-12" fill="none" aria-hidden="true">
+          <path
+            d="M12 10H52V38C52 52 32 62 32 62C32 62 12 52 12 38V10Z"
+            fill="#C99A2E"
+            stroke="#1B2A47"
+            strokeWidth="2.6"
+          />
+          <rect x="16" y="14" width="32" height="7" fill="#1B2A47" />
+          <rect x="17" y="24" width="14" height="14" fill="#E3262E" />
+          <rect x="33" y="24" width="14" height="14" fill="#1B2A47" />
+          <rect x="17" y="40" width="14" height="11" fill="#1B2A47" />
+          <rect x="33" y="40" width="14" height="11" fill="#E3262E" />
+        </svg>
+        <span className="text-[11px] font-bold tracking-[2.2px] uppercase text-[#1B2A47]">
+          PORSCHE
+        </span>
+      </div>
+    ),
+  },
+  {
     id: 'land-rover',
     name: 'Land Rover',
+    region: 'Châu Âu',
     renderLogo: () => (
       <div className="flex flex-col items-center justify-center gap-2">
         <svg viewBox="0 0 120 60" className="w-28 h-12" fill="none" aria-hidden="true">
-          <ellipse cx="60" cy="30" rx="52" ry="23" fill="#0E5A38" className="brand-accent-fill" stroke="#1B2A47" strokeWidth="2.5" />
+          <ellipse cx="60" cy="30" rx="52" ry="23" fill="#0E5A38" stroke="#1B2A47" strokeWidth="2.5" />
           <ellipse cx="60" cy="30" rx="47" ry="18.5" stroke="#D5DBE5" strokeWidth="1.2" />
           <text
             x="60"
@@ -111,6 +156,7 @@ export const PARTNER_BRANDS: PartnerBrand[] = [
   {
     id: 'mini',
     name: 'MINI',
+    region: 'Châu Âu',
     renderLogo: () => (
       <div className="flex flex-col items-center justify-center gap-1.5">
         <svg viewBox="0 0 140 54" className="w-32 h-12" fill="none" aria-hidden="true">
@@ -138,27 +184,65 @@ export const PARTNER_BRANDS: PartnerBrand[] = [
     ),
   },
   {
-    id: 'porsche',
-    name: 'Porsche',
-    renderLogo: () => (
-      <div className="flex flex-col items-center justify-center gap-1.5">
-        <svg viewBox="0 0 64 70" className="w-11 h-12" fill="none" aria-hidden="true">
-          <path
-            d="M12 10H52V38C52 52 32 62 32 62C32 62 12 52 12 38V10Z"
-            fill="#C99A2E"
-            stroke="#1B2A47"
-            strokeWidth="2.6"
-          />
-          <rect x="16" y="14" width="32" height="7" fill="#1B2A47" />
-          <rect x="17" y="24" width="14" height="14" fill="#E3262E" />
-          <rect x="33" y="24" width="14" height="14" fill="#1B2A47" />
-          <rect x="17" y="40" width="14" height="11" fill="#1B2A47" />
-          <rect x="33" y="40" width="14" height="11" fill="#E3262E" />
-        </svg>
-        <span className="text-[11px] font-bold tracking-[2.2px] uppercase text-[#1B2A47]">
-          PORSCHE
-        </span>
-      </div>
-    ),
+    id: 'volkswagen',
+    name: 'Volkswagen',
+    region: 'Châu Âu',
+    renderLogo: () => <TypographicBrandPlaceholder label="VOLKSWAGEN" region="Châu Âu" />,
+  },
+  {
+    id: 'volvo',
+    name: 'Volvo',
+    region: 'Châu Âu',
+    renderLogo: () => <TypographicBrandPlaceholder label="VOLVO" region="Châu Âu" />,
+  },
+
+  // Châu Á: Toyota, Lexus, Honda, Mazda, Hyundai, Kia, Mitsubishi, Suzuki
+  {
+    id: 'toyota',
+    name: 'Toyota',
+    region: 'Châu Á',
+    renderLogo: () => <TypographicBrandPlaceholder label="TOYOTA" region="Châu Á" />,
+  },
+  {
+    id: 'lexus',
+    name: 'Lexus',
+    region: 'Châu Á',
+    renderLogo: () => <TypographicBrandPlaceholder label="LEXUS" region="Châu Á" />,
+  },
+  {
+    id: 'honda',
+    name: 'Honda',
+    region: 'Châu Á',
+    renderLogo: () => <TypographicBrandPlaceholder label="HONDA" region="Châu Á" />,
+  },
+  {
+    id: 'mazda',
+    name: 'Mazda',
+    region: 'Châu Á',
+    renderLogo: () => <TypographicBrandPlaceholder label="MAZDA" region="Châu Á" />,
+  },
+  {
+    id: 'hyundai',
+    name: 'Hyundai',
+    region: 'Châu Á',
+    renderLogo: () => <TypographicBrandPlaceholder label="HYUNDAI" region="Châu Á" />,
+  },
+  {
+    id: 'kia',
+    name: 'Kia',
+    region: 'Châu Á',
+    renderLogo: () => <TypographicBrandPlaceholder label="KIA" region="Châu Á" />,
+  },
+  {
+    id: 'mitsubishi',
+    name: 'Mitsubishi',
+    region: 'Châu Á',
+    renderLogo: () => <TypographicBrandPlaceholder label="MITSUBISHI" region="Châu Á" />,
+  },
+  {
+    id: 'suzuki',
+    name: 'Suzuki',
+    region: 'Châu Á',
+    renderLogo: () => <TypographicBrandPlaceholder label="SUZUKI" region="Châu Á" />,
   },
 ];

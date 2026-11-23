@@ -9,6 +9,7 @@ import { AboutAndServices } from './components/AboutAndServices';
 import { RescueBrandsProducts } from './components/RescueBrandsProducts';
 import { ProjectsMarqueeGallery } from './components/ProjectsMarqueeGallery';
 import { ProcessAndNews } from './components/ProcessAndNews';
+import { PerformancePartsSection } from './components/PerformancePartsSection';
 import { FooterSection } from './components/FooterSection';
 
 export default function App() {
@@ -32,6 +33,9 @@ export default function App() {
 
         {/* 11) PROCESS & 12) NEWS */}
         <ProcessAndNews />
+
+        {/* NEW) PERFORMANCE PARTS BRANDS (#do-choi-xe) */}
+        <PerformancePartsSection />
       </main>
 
       {/* 13) FOOTER & FLOATING WIDGETS */}

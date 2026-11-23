@@ -55,7 +55,7 @@ export const RescueBrandsProducts: React.FC = () => {
           >
             <GkpImage
               src={GARAGE_IMAGES.rescueTowTruck}
-              alt="Xe cứu hộ sàn trượt chuyên dụng vận chuyển xe sang 24/7"
+              alt="Xe cứu hộ sàn trượt chuyên dụng vận chuyển mọi dòng xe 24/7"
               loading="lazy"
               className="w-full h-full object-cover opacity-35 lg:opacity-95"
             />
@@ -115,7 +115,7 @@ export const RescueBrandsProducts: React.FC = () => {
         </div>
       </section>
 
-      {/* 6) BRANDS & PARTNERS — height 378 */}
+      {/* 6) BRANDS & PARTNERS — height 378, auto-scrolling carousel (6 cards visible on desktop) */}
       <section
         aria-label="Thương hiệu xe và đối tác"
         className="py-14 md:py-16 lg:py-[58px]"
@@ -128,20 +128,29 @@ export const RescueBrandsProducts: React.FC = () => {
             <SectionHeader title="THƯƠNG HIỆU XE & ĐỐI TÁC" />
           </Reveal>
 
-          {/* 6 cards: 3x2 on mobile, 3x2 on tablet, 6x1 on desktop */}
-          <div className="mt-9 grid grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-[20px]">
-            {PARTNER_BRANDS.map((brand, idx) => (
-              <Reveal key={brand.id} delayMs={idx * 45}>
+          {/* Auto-scrolling carousel inside 1398px container (6 cards visible on desktop: 6*216 + 5*20 = 1396px) */}
+          <div className="mt-9 brands-marquee-wrapper overflow-hidden py-2">
+            <div className="animate-brands-marquee gap-[16px] lg:gap-[20px]">
+              {[0, 1].map((dupIdx) => (
                 <div
-                  className="group h-[104px] sm:h-[132px] bg-white rounded-[12px] border border-[#DCE4F2] shadow-[0_6px_18px_rgba(10,26,58,0.05)] flex items-center justify-center p-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_26px_rgba(11,91,224,0.12)]"
-                  title={brand.name}
+                  key={dupIdx}
+                  className="flex items-center gap-[16px] lg:gap-[20px] shrink-0"
+                  aria-hidden={dupIdx === 1}
                 >
-                  <div className="grayscale contrast-[1.15] opacity-[0.88] transition-all duration-200 group-hover:grayscale-[0.25] group-hover:opacity-100 scale-90 sm:scale-100">
-                    {brand.renderLogo()}
-                  </div>
+                  {PARTNER_BRANDS.map((brand) => (
+                    <div
+                      key={`${dupIdx}-${brand.id}`}
+                      className="group w-[164px] sm:w-[196px] lg:w-[216px] h-[108px] sm:h-[132px] shrink-0 bg-white rounded-[12px] border border-[#DCE4F2] shadow-[0_6px_18px_rgba(10,26,58,0.05)] flex items-center justify-center p-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_26px_rgba(11,91,224,0.12)]"
+                      title={brand.name}
+                    >
+                      <div className="grayscale contrast-[1.15] opacity-[0.88] transition-all duration-200 group-hover:grayscale-[0.25] group-hover:opacity-100 scale-90 sm:scale-100">
+                        {brand.renderLogo()}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </Reveal>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

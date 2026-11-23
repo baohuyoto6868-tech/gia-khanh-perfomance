@@ -8,7 +8,7 @@ const ABOUT_FEATURES = [
   {
     id: 'kt-chuyen-sau',
     title: 'Kỹ Thuật Chuyên Sâu',
-    description: 'Đội ngũ chuyên xe Đức, xử lý từ lỗi nhỏ đến động cơ – hộp số.',
+    description: 'Đội ngũ giàu kinh nghiệm với mọi dòng xe, xử lý từ lỗi nhỏ đến động cơ – hộp số.',
     Icon: Wrench,
   },
   {
@@ -79,7 +79,7 @@ export const AboutAndServices: React.FC = () => {
                 <div className="relative w-full h-full about-slant-clip overflow-hidden shadow-[0_20px_44px_rgba(10,26,58,0.18)] bg-[#0A1A3A]">
                   <GkpImage
                     src={GARAGE_IMAGES.aboutMechanicHood}
-                    alt="Kỹ thuật viên Garage Gia Khánh Performance kiểm tra động cơ xe sang"
+                    alt="Kỹ thuật viên Garage Gia Khánh Performance kiểm tra động cơ ô tô"
                     loading="lazy"
                     className="w-full h-full object-cover"
                   />
@@ -108,9 +108,7 @@ export const AboutAndServices: React.FC = () => {
               {/* P1 */}
               <p className="mt-4 text-[15.5px] leading-[1.75] text-[#1B2A47]">
                 <strong className="font-bold text-[#0A1A3A]">Garage Gia Khánh Performance</strong> là đơn vị chuyên cung cấp các dịch vụ{' '}
-                <strong className="font-bold text-[#0A1A3A]">sửa chữa, bảo dưỡng, nâng cấp và độ xe ô tô cao cấp</strong>, đặc biệt tập trung vào hai thương hiệu xe sang đến từ Đức:{' '}
-                <strong className="font-bold text-[#0A1A3A]">BMW</strong> và{' '}
-                <strong className="font-bold text-[#0A1A3A]">Mercedes-Benz</strong>.
+                <strong className="font-bold text-[#0A1A3A]">sửa chữa, bảo dưỡng, nâng cấp và độ xe ô tô cao cấp</strong>, chuyên tất cả các dòng xe từ xe Châu Á đến xe Châu Âu.
               </p>
 
               {/* P2 */}

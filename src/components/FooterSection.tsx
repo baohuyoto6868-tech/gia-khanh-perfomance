@@ -262,6 +262,7 @@ export const FooterSection: React.FC = () => {
 
             {/* Col 3: ĐĂNG KÝ NHẬN TIN full-height panel (width 404 desktop) */}
             <div
+              id="dang-ky-nhan-tin"
               className="w-full lg:w-[360px] xl:w-[404px] shrink-0 border-t-[4px] border-[#1E8CFF] px-6 sm:px-8 py-8 lg:py-9 flex flex-col justify-center"
               style={{
                 background: 'linear-gradient(180deg, #0B2A66 0%, #06183F 100%)',

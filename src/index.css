@@ -163,6 +163,16 @@
   animation-play-state: paused;
 }
 
+.animate-brands-marquee {
+  display: flex;
+  width: max-content;
+  animation: gkp-marquee 42s linear infinite;
+}
+
+.brands-marquee-wrapper:hover .animate-brands-marquee {
+  animation-play-state: paused;
+}
+
 /* Scroll Reveal */
 .reveal-fade-up {
   opacity: 0;
@@ -176,7 +186,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-gkp-marquee {
+  .animate-gkp-marquee,
+  .animate-brands-marquee {
     animation: none;
   }
   .reveal-fade-up {

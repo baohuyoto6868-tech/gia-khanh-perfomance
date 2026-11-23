@@ -57,7 +57,7 @@ export const ProcessAndNews: React.FC = () => {
           <div className="w-full h-full process-slant-clip overflow-hidden relative">
             <GkpImage
               src={GARAGE_IMAGES.processMercedesSunset}
-              alt="Mercedes-Benz C-Class màu xanh dương vận hành trên đường lúc hoàng hôn"
+              alt="Ô tô vận hành trên đường lúc hoàng hôn sau khi hoàn tất quy trình bảo dưỡng"
               loading="lazy"
               className="w-full h-full object-cover"
             />

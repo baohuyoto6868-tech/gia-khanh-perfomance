@@ -137,7 +137,7 @@ export const HeroSection: React.FC = () => {
 
           {/* Description */}
           <p className="mt-4 mx-auto md:mx-0 max-w-[470px] text-[15.5px] lg:text-[18px] leading-[1.7] text-[#C5D3EC]">
-            Chuyên các dòng xe Đức: BMW, Mercedes-Benz và các dòng xe sang.
+            Chuyên tất cả các dòng xe từ xe Châu Á đến xe Châu Âu.
           </p>
 
           {/* Dual CTAs */}

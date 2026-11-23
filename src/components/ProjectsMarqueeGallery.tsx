@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react';
+import { CarFront, ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react';
 import {
   GALLERY_ITEMS,
   PROJECTS_LIST,
@@ -8,24 +8,39 @@ import {
 } from '../data/garageData';
 import { GkpImage, Reveal, SectionHeader, SkewedStripes } from './BrandMotifs';
 
-const FILTER_TABS: ProjectCategory[] = ['BMW', 'MERCEDES-BENZ', 'BẢO DƯỠNG', 'NÂNG CẤP'];
+const FILTER_TABS: ProjectCategory[] = ['XE CHÂU ÂU', 'XE CHÂU Á', 'BẢO DƯỠNG', 'NÂNG CẤP'];
+
+const DarkProjectPlaceholder: React.FC<{ title: string; className?: string }> = ({
+  title,
+  className = '',
+}) => (
+  <div
+    className={`w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#0B1D42] via-[#06122B] to-[#030814] text-center p-6 ${className}`}
+    role="img"
+    aria-label={`Hình ảnh đang cập nhật – ${title}`}
+  >
+    <CarFront className="w-11 h-11 text-[#7CC0FF]/70 mb-3" strokeWidth={1.6} />
+    <span className="text-[16px] font-extrabold italic uppercase tracking-[2px] text-chrome">
+      {title}
+    </span>
+    <span className="mt-1.5 text-[12px] font-medium tracking-[0.4px] text-[#8FA2C7]">
+      Hình ảnh thực tế đang cập nhật
+    </span>
+  </div>
+);
 
 export const ProjectsMarqueeGallery: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ProjectCategory>('BMW');
-  const [hasFiltered, setHasFiltered] = useState(false);
+  const [activeTab, setActiveTab] = useState<ProjectCategory>('XE CHÂU ÂU');
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const visibleProjects = showAllProjects
     ? PROJECTS_LIST
-    : hasFiltered
-    ? PROJECTS_LIST.filter((p) => p.categories.includes(activeTab)).slice(0, 3)
-    : PROJECTS_LIST.filter((p) => p.featuredDefault);
+    : PROJECTS_LIST.filter((p) => p.categories.includes(activeTab)).slice(0, 3);
 
   const handleTabClick = (tab: ProjectCategory) => {
     setActiveTab(tab);
-    setHasFiltered(true);
     setShowAllProjects(false);
   };
 
@@ -112,14 +127,21 @@ export const ProjectsMarqueeGallery: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setSelectedProject(project)}
-                    className="relative w-full h-[260px] sm:h-[300px] xl:h-[332px] rounded-[10px] overflow-hidden shadow-[0_18px_34px_rgba(4,10,24,0.35)] bg-[#0A1A3A] cursor-pointer transition-transform duration-300 group-hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-[#1E8CFF]"
+                    className="relative w-full h-[260px] sm:h-[300px] xl:h-[332px] rounded-[10px] overflow-hidden shadow-[0_18px_34px_rgba(4,10,24,0.35)] bg-[#040A18] cursor-pointer transition-transform duration-300 group-hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-[#1E8CFF]"
                   >
-                    <GkpImage
-                      src={project.image}
-                      alt={project.alt}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+                    {project.image ? (
+                      <GkpImage
+                        src={project.image}
+                        alt={project.alt}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <DarkProjectPlaceholder
+                        title={project.title}
+                        className="transition-transform duration-500 group-hover:scale-105"
+                      />
+                    )}
                     <div
                       className="absolute bottom-0 left-0 right-0 h-[5px]"
                       style={{ background: 'linear-gradient(90deg, #1E8CFF 0%, #E3262E 100%)' }}
@@ -144,8 +166,7 @@ export const ProjectsMarqueeGallery: React.FC = () => {
               onClick={() => {
                 setShowAllProjects((prev) => !prev);
                 if (showAllProjects) {
-                  setHasFiltered(false);
-                  setActiveTab('BMW');
+                  setActiveTab('XE CHÂU ÂU');
                 }
               }}
               className="btn-gkp-blue h-[46px] px-7 rounded-[10px] inline-flex items-center justify-center gap-2 text-[14.5px] font-bold uppercase tracking-[0.5px] text-white cursor-pointer whitespace-nowrap"
@@ -253,12 +274,16 @@ export const ProjectsMarqueeGallery: React.FC = () => {
               <X className="w-5 h-5" />
             </button>
 
-            <div className="h-64 w-full">
-              <GkpImage
-                src={selectedProject.image}
-                alt={selectedProject.alt}
-                className="w-full h-full object-cover"
-              />
+            <div className="h-64 w-full bg-[#040A18]">
+              {selectedProject.image ? (
+                <GkpImage
+                  src={selectedProject.image}
+                  alt={selectedProject.alt}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <DarkProjectPlaceholder title={selectedProject.title} />
+              )}
             </div>
 
             <div className="p-6">
